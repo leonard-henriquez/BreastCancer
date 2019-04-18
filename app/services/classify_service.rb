@@ -5,8 +5,8 @@ class ClassifyService
   include IBMWatson
   attr_accessor :user, :opportunity
 
-  def initialize(url = nil)
-    @url = url || "https://watson-developer-cloud.github.io/doc-tutorial-downloads/visual-recognition/640px-IBM_VGA_90X8941_on_PS55.jpg"
+  def initialize(image_url)
+    @image_url = image_url
   end
 
   def call
@@ -15,7 +15,14 @@ class ClassifyService
       iam_apikey: ENV['WATSON_API_KEY']
     )
 
-    classes = visual_recognition.classify(@url)
-    puts JSON.pretty_generate(classes.result)
+    response = visual_recognition.classify(
+      url: @image_url,
+      threshold: 0,
+      classifier_ids: ["BreastCancerDetection_633095304"]
+    )
+
+    classes = response.result['images'][0]['classifiers'][0]['classes']
+    res = classes.map { |item| [item['class'], item['score']] }.to_h
+    return { cancer: res['0YES'], normal: res['NORM'] }
   end
 end

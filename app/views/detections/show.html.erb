@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<% unless @detection.cancer.nil? %>
+  Cancer: <%= @detection.cancer %> %
+<% end %>
+
+<% unless @detection.normal.nil? %>
+  Normal: <%= @detection.normal %> %
+<% end %>
+
+<% if @detection.image.attached? %>
+  <%= image_tag(url_for(@detection.image), width: 400) %>
+<% end %>
+
+<%= link_to 'Detect', check_path(@detection), method: :post %> |
+<%= link_to 'Edit', edit_detection_path(@detection) %> |
+<%= link_to 'Back', detections_path %>
