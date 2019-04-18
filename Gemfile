@@ -58,3 +58,6 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem "azure-storage", require: false
 
 gem 'ibm_watson'
+
+gem 'bootstrap', '~> 4.3.1'
+gem 'jquery-rails'
