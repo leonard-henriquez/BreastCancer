@@ -54,3 +54,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'ibm_watson'
+
+gem 'dotenv-rails', groups: [:development, :test]
