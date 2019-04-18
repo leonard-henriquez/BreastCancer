@@ -1,0 +1,2 @@
+class Detection < ApplicationRecord
+end
