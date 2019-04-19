@@ -1,5 +1,5 @@
 class DetectionsController < ApplicationController
-  before_action :set_detection, only: [:show, :edit, :update, :destroy, :check]
+  before_action :set_detection, only: [:show, :check]
 
   # GET /detections
   def index
@@ -15,41 +15,19 @@ class DetectionsController < ApplicationController
     @detection = Detection.new
   end
 
-  # GET /detections/1/edit
-  def edit
-  end
-
   # POST /detections
   def create
     @detection = Detection.new()
-    @detection.image.attach(detection_params[:image])
+    img = detection_params[:image]
 
+    call_watson(img)
+
+    @detection.image.attach(img)
     if @detection.save
       redirect_to @detection, notice: 'Detection was successfully created.'
     else
       render :new
     end
-  end
-
-  # PATCH/PUT /detections/1
-  def update
-    if @detection.update(detection_params)
-      redirect_to @detection, notice: 'Detection was successfully updated.'
-    else
-      render :edit
-    end
-  end
-
-  # DELETE /detections/1
-  def destroy
-    @detection.destroy
-    redirect_to detections_url, notice: 'Detection was successfully destroyed.'
-  end
-
-  def check
-    url = @detection.image.service_url.split("?").first
-    response = ClassifyService.new(url).call
-    @detection.update(response)
   end
 
   private
@@ -63,5 +41,20 @@ class DetectionsController < ApplicationController
   def detection_params
     # params.fetch(:detection)
     params.require(:detection).permit(:image)
+  end
+
+  def call_watson(img)
+    filename = img.original_filename
+    type = img.content_type
+
+    temp_path = Rails.root.join('tmp', filename)
+    File.open(temp_path, 'wb') { |file| file.write(img.tempfile.read) }
+
+    file_stream = File.open(temp_path)
+    File.delete(temp_path) if File.exist?(temp_path)
+
+    response = ClassifyService.new(file_stream, filename, type).call
+
+    @detection.update(response)
   end
 end

@@ -5,8 +5,10 @@ class ClassifyService
   include IBMWatson
   attr_accessor :user, :opportunity
 
-  def initialize(image_url)
-    @image_url = image_url
+  def initialize(image, filename, type)
+    @image = image
+    @filename = filename
+    @type = type
   end
 
   def call
@@ -16,7 +18,9 @@ class ClassifyService
     )
 
     response = visual_recognition.classify(
-      url: @image_url,
+      images_file: @image,
+      images_filename: @filename,
+      images_file_content_type: @type,
       threshold: 0,
       classifier_ids: ["BreastCancerDetection_633095304"]
     )

@@ -1,17 +1,35 @@
-<p id="notice"><%= notice %></p>
+<div class="row justify-content-center h-100">
+  <div class="col-md-8 col-lg-6 my-auto">
 
-<% unless @detection.cancer.nil? %>
-  Cancer: <%= @detection.cancer %> %
-<% end %>
+    <div class="card box-shadow text-center">
+      <div class="card-header">
+        Breast cancer detection
+      </div>
 
-<% unless @detection.normal.nil? %>
-  Normal: <%= @detection.normal %> %
-<% end %>
+      <% if @detection.image.attached? %>
+        <%= image_tag(url_for(@detection.image), class:"card-img-top") %>
+      <% end %>
 
-<% if @detection.image.attached? %>
-  <%= image_tag(url_for(@detection.image), width: 400) %>
-<% end %>
+      <div class="card-body">
 
-<%= link_to 'Detect', check_path(@detection), method: :post %> |
-<%= link_to 'Edit', edit_detection_path(@detection) %> |
-<%= link_to 'Back', detections_path %>
+        <p>
+          <% unless @detection.cancer.nil? %>
+            Cancer: <%= @detection.cancer %> %
+          <% end %>
+
+          <% unless @detection.normal.nil? %>
+            Normal: <%= @detection.normal %> %
+          <% end %>
+        </p>
+
+        <p>
+
+          <%= link_to 'Back', detections_path, class: "btn btn-secondary m-1" %>
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

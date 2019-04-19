@@ -59,5 +59,6 @@ gem "azure-storage", require: false
 
 gem 'ibm_watson'
 
-gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
+gem 'bootstrap', '~> 4.3.1'
+gem "bootstrap_form", ">= 4.2.0"

@@ -1,9 +1,22 @@
-<h1>New Detection</h1>
+<div class="row justify-content-center h-100">
+  <div class="col-md-8 col-lg-6 my-auto">
 
-<%= form_for @detection, url: {action: "create"} do |f| %>
-  <%= f.file_field :image %>
-  <%= f.submit "Create" %>
-<% end %>
+    <div class="card box-shadow text-center">
+      <div class="card-header">
+        Breast cancer detection
+      </div>
 
+      <div class="card-body">
 
-<%= link_to 'Back', detections_path %>
+        <%= bootstrap_form_for @detection, url: {action: "create"} do |f| %>
+          <%= f.file_field :image, label: "Please upload a mammogram:" %>
+          <%= f.submit "Create", class: "btn btn-primary m-1" %>
+          <%= link_to 'Back', detections_path, class: "btn btn-secondary m-1" %>
+        <% end %>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>

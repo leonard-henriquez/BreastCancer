@@ -4547,7 +4547,7 @@ p-try@^2.0.0:
   resolved "https://registry.yarnpkg.com/p-try/-/p-try-2.2.0.tgz#cb2868540e313d61de58fafbe35ce9004d5540e6"
   integrity sha512-R4nPAVTAU0B9D35/Gk3uJf/7XYbQcyohSKdvAxIRSNghFl4e71hVoGnBNQz9cWaXxO2I10KTC+3jMdvvoKw6dQ==
 
-pako@~1.0.5:
+pako@^1.0.6, pako@~1.0.5:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.10.tgz#4328badb5086a426aa90f541977d4955da5c9732"
   integrity sha512-0DTvPVU3ed8+HNXOu5Bs+o//Mbdj9VNQMUOe9oKCwh8l0GNwpTDMKCWbRjgtD291AWnkAgkqA/LOnQS8AmS1tw==
@@ -5999,6 +5999,13 @@ signal-exit@^3.0.0:
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
   integrity sha1-tf3AjxKH6hF4Yo5BXiUTK3NkbG0=
 
+simple-dropzone@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/simple-dropzone/-/simple-dropzone-0.7.0.tgz#e22bb77aa71bafef6a1228729cfe4fac8213603a"
+  integrity sha512-pqUjr5wx7BsnIFOPuJvr4KF6B1+R9kxMcl3MJ1YgNsr5yhj+fiMqvlQzyD310jAwrpoJdUmbrnCg3+U6XtoZkA==
+  dependencies:
+    zip-loader "^1.1.0"
+
 simple-swizzle@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/simple-swizzle/-/simple-swizzle-0.2.2.tgz#a4da6b635ffcccca33f70d17cb92592de95e557a"
@@ -7017,3 +7024,10 @@ yargs@^7.0.0:
     which-module "^1.0.0"
     y18n "^3.2.1"
     yargs-parser "^5.0.0"
+
+zip-loader@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/zip-loader/-/zip-loader-1.1.0.tgz#c610f0b378e0bfb1d02a94eb9ba7cd6b0968f708"
+  integrity sha512-8XZgg1JFdlHmcKaldLEpjGH6qtxUxwDGfS+cgF1OVWa5dT6QFI6EgzAbMorT1RY6uurlevr6JytawNpUhOJLeQ==
+  dependencies:
+    pako "^1.0.6"
