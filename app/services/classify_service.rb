@@ -22,11 +22,28 @@ class ClassifyService
       images_filename: @filename,
       images_file_content_type: @type,
       threshold: 0,
-      classifier_ids: ["BreastCancerDetection_633095304"]
+      classifier_ids: [ENV['CLASSIFIER'], "default"]
     )
 
-    classes = response.result['images'][0]['classifiers'][0]['classes']
+    classifier = response.result['images'][0]['classifiers']
+
+    default = (classifier[0]['classifier_id'] == 'default') ? 0 : 1
+    custom = (classifier[0]['classifier_id'] == 'default') ? 1 : 0
+
+    mammogram_class = classifier[default]['classes'].find do |item|
+      item['class'] == 'mammogram (x-ray)'
+    end
+
+    is_mammogram = mammogram_class['score'] unless (mammogram_class.nil?)
+    is_mammogram = is_mammogram || 0
+
+    classes = classifier[custom]['classes']
     res = classes.map { |item| [item['class'], item['score']] }.to_h
-    return { cancer: res['0YES'], normal: res['NORM'] }
+
+    return {
+      cancer: res['0YES'],
+      normal: res['NORM'],
+      is_mammogram: is_mammogram
+    }
   end
 end

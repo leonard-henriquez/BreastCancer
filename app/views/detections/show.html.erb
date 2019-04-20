@@ -13,12 +13,18 @@
       <div class="card-body">
 
         <p>
-          <% unless @detection.cancer.nil? %>
-            Cancer: <%= @detection.cancer %> %
-          <% end %>
 
-          <% unless @detection.normal.nil? %>
-            Normal: <%= @detection.normal %> %
+          <% unless @detection.is_mammogram.nil? %>
+            Mammogram? <%= @detection.is_mammogram %> %
+            <% unless @detection.is_mammogram < 0.5 %>
+              <% unless @detection.cancer.nil? %>
+                Cancer: <%= @detection.cancer %> %
+              <% end %>
+
+              <% unless @detection.normal.nil? %>
+                Normal: <%= @detection.normal %> %
+              <% end %>
+            <% end %>
           <% end %>
         </p>
 

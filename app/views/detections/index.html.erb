@@ -9,12 +9,19 @@
     </p>
 
     <% @detections.each do |detection| %>
+      <% unless detection.is_mammogram.nil? || detection.is_mammogram < 0.5 %>
+
       <div class="card box-shadow mb-4">
         <%= image_tag(url_for(detection.image), class: "card-img-top") %>
 
         <div class="card-body">
 
           <p class="card-text">
+
+            <% unless detection.is_mammogram.nil? %>
+              Mammogram? <%= detection.is_mammogram %> %
+            <% end %>
+
             <% unless detection.cancer.nil? %>
               Cancer: <%= detection.cancer %> %
             <% end %>
@@ -30,6 +37,8 @@
           <%= link_to 'Show', detection, class: "btn btn-primary" %>
         </div>
       </div>
+
+      <% end %>
     <% end %>
 
   </div>
