@@ -1,24 +1,91 @@
-# README
+# Breast Cancer Detection App ![language](https://img.shields.io/badge/language-ruby-blue.svg)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> Application to help detect breast cancer from mammogram
 
-Things you may want to cover:
+## :books: Table of Contents
 
-* Ruby version
+- [Installation](#package-installation)
+- [Usage](#rocket-usage)
+- [Support](#hammer_and_wrench-support)
+- [Contributing](#memo-contributing)
+- [License](#scroll-license)
 
-* System dependencies
+## :package: Installation
 
-* Configuration
+Before starting, make sure Ruby is installed on your system. Fire command prompt and run command:
 
-* Database creation
+```bash
+ruby -v
+```
 
-* Database initialization
+Make sure Rails is installed:
 
-* How to run the test suite
+```bash
+rails -v
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+If you see Ruby and Rails version then you are good to continue, other wise [setup Ruby on Rails](https://www.tutorialspoint.com/ruby-on-rails/rails-installation.htm)
 
-* Deployment instructions
+Make sure you also have NPM:
 
-* ...
+```bash
+npm -v
+```
+
+If you see NPM version then you are good to continue, other wise [setup NPM and Node.js](https://nodejs.org/en/)
+
+Once done, you can install the application
+
+1. Clone the repo
+
+```bash
+git clone https://github.com/leonard-henriquez/BreastCancer.git
+```
+
+2. Install all Ruby dependencies
+
+```bash
+bundle install
+```
+
+3. Install all Javascript dependencies
+
+```bash
+npm install
+```
+
+4. Create db and migrate schema
+
+```bash
+rake db:drop db:create db:migrate
+```
+
+5. Create your environnment
+
+```bash
+cp .env.example .env
+```
+
+Then, you should edit the file .env to reflect your configuration
+
+## :rocket: Usage
+
+Run the application
+
+```bash
+rails s
+```
+
+The application will be available at the following url: http://localhost:3000/
+
+## :hammer_and_wrench: Support
+
+Please [open an issue](https://github.com/leonard-henriquez/BreastCancer/issues/new) for support.
+
+## :memo: Contributing
+
+Please contribute using [Github Flow](https://guides.github.com/introduction/flow/). Create a branch, add commits, and [open a pull request](https://github.com/leonard-henriquez/BreastCancer/compare/).
+
+## :scroll: License
+
+[MIT](LICENSE) © [Leonard Henriquez](https://github.com/leonard-henriquez)
