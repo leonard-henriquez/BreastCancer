@@ -2,6 +2,8 @@
 
 > Application to help detect breast cancer from mammogram
 
+![Screenshot of the app](https://user-images.githubusercontent.com/30215564/56472220-10045900-645c-11e9-8c5f-4f4f416cf430.png)
+
 ## :books: Table of Contents
 
 - [Installation](#package-installation)
